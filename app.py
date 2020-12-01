@@ -14,6 +14,7 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # Init MySQL
 mysql = MySQL(app)
 
+# Index and Home routes both render Home Page
 @app.route('/')
 def index():
 	return render_template('home.html')
@@ -22,10 +23,12 @@ def index():
 def home():
 	return render_template('home.html')
 
+# About Us route
 @app.route('/about')
 def about():
 	return render_template('about.html')
 
+# Articles display page route
 @app.route('/articles')
 def articles():
 	return render_template('articles.html', articles = Articles)
@@ -34,6 +37,7 @@ def articles():
 def article(id):
 	return render_template('article.html', id=id)
 
+# Register form necessary for new user sign-up
 class RegisterForm(Form):
 	name = StringField('Name', [validators.Length(min=1, max=50)])
 	email = StringField('Email', [validators.Length(min=6, max=50)])
@@ -46,7 +50,7 @@ class RegisterForm(Form):
 		validators.DataRequired(),
 		validators.EqualTo('password', message='Passwords do not match')
 	])
-
+# Register Page route
 @app.route('/register', methods=['GET', 'POST'])
 def register():
 	form = RegisterForm(request.form)
@@ -62,12 +66,13 @@ def register():
 		mysql.connection.commit()
 		#Close connection
 		cur.close()
-		# Flash Message
+		# Successful Flash Message
 		flash('Registration Successful', 'success')
 		redirect(url_for('home'))
 		return redirect(url_for('login'))
 	return render_template('register.html', form=form)
 
+# Login Page route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	if request.method == 'POST':
@@ -100,6 +105,7 @@ def login():
 			return render_template('login.html', error=error)
 	return render_template('login.html')
 
+# Dashboard Page route
 @app.route('/dashboard')
 def dashboard():
 	return render_template('dashboard.html')
