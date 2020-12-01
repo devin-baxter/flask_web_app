@@ -105,10 +105,18 @@ def login():
 			return render_template('login.html', error=error)
 	return render_template('login.html')
 
+# Logout route
+@app.route('/logout')
+def logout():
+	session.clear
+	flash('You are now logged out', 'success')
+	return redirect(url_for('login'))
+
 # Dashboard Page route
 @app.route('/dashboard')
 def dashboard():
 	return render_template('dashboard.html')
+
 
 
 if __name__ == '__main__':
