@@ -15,9 +15,9 @@
                 <a class="nav-link" href="/about" tabindex="-1">About Us</a>
             </li>
         </ul>
-
+        # VERY BIG PROBLEM WITH THE SESSION.LOGGED_IN NOT WORKING #
         <ul class="nav navbar-nav navbar-right">
-            {% if session.logged_in %}
+            {% if session.logged_in == 'True' %}
                 <li><a href="/logout">Sign Out</a></li>
             {% else %}
                 <li><a class='nav-link' href="/register">Register</a></li>
