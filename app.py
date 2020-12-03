@@ -90,7 +90,7 @@ def login():
 			# Compare Passwords
 			if sha256_crypt.verify(password_candidate, password):
 				# Successful Login
-				session['logged_in'] = True
+				session["logged_in"] = True
 				session['username'] = username
 				flash('You are logged in', 'success')
 				return redirect(url_for('dashboard'))
