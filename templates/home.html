@@ -5,6 +5,10 @@
     <div class="container">
       <h2 class="display-4">FlaskApp Homepage!</h2>
       <p class="lead">This basic website was built using the Python Flask framework with Jinja2 and Bootstrap4</p>
+      {% if session.logged_in == NULL %}
+        <a href="/register" class="btn btn-primary btn-lg">Register</a>
+        <a href="/login" class="btn btn-success btn-lg">Login</a>
+      {% endif %}
     </div>
   </div>
 {% endblock %}
