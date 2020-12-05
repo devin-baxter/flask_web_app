@@ -175,7 +175,7 @@ def add_article():
 		#Create Cursor
 		cur = mysql.connection.cursor()
 		#Execute
-		cur.execute("INSERT INTO articles(title, body, author) VALUES(%s, %s, %s)",(title, body, session['username']))
+		cur.execute("INSERT INTO articles(title, body, author) VALUES(%s, %s, %s)", (title, body, session['username']))
 		# Commit to DataBase
 		mysql.connection.commit()
 		# Close connection
@@ -183,6 +183,52 @@ def add_article():
 		flash('Article Created', 'success')
 		return redirect(url_for('dashboard'))
 	return render_template('add_article.html', form=form)
+
+# Edit Article
+@app.route('/edit_article/<string:id>', methods=['GET', 'POST'])
+@is_logged_in
+def edit_article(id):
+	# Create cursor
+	cur = mysql.connection.cursor()
+	# Get Article via id
+	result = cur.execute("SELECT * FROM articles WHERE id = %s", [id])
+	article = cur.fetchone()
+	# Get article form
+	form = ArticleForm(request.form)
+	# Populate Article form fields
+	form.title.data = article['title']
+	form.body.data = article['body']
+	if request.method == 'POST' and form.validate():
+		title = request.form['title']
+		body = request.form['body']
+		#Create Cursor
+		cur = mysql.connection.cursor()
+		#Execute
+		cur.execute("UPDATE articles SET title=%s, body=%s WHERE id = %s", (title, body, id))
+		# Commit to Database
+		mysql.connection.commit()
+		# Close connection
+		cur.close()
+		app.logger.info('ARTICLE UPDATED')
+		flash('Article Updated', 'success')
+		return redirect(url_for('dashboard'))
+	return render_template('edit_article.html', form=form)
+
+# Delete Article
+@app.route('/delete_article/<string:id>', methods=['POST'])
+@is_logged_in
+def delete_article(id):
+	#Create cursor
+	cur = mysql.connection.cursor()
+	# Execute
+	cur.execute("DELETE FROM articles WHERE id=%s", [id])
+	# Commit to Database
+	mysql.connection.commit()
+	# Close connection
+	cur.close()
+	app.logger.info('ARTICLE DELETED')
+	flash('Article Deleted', 'success')
+	return redirect(url_for('dashboard'))
 
 # Main Function
 if __name__ == '__main__':
