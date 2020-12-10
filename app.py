@@ -12,6 +12,7 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'm3g4byt3$'
 app.config['MYSQL_DB'] = 'flask_app_db'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
 # Init MySQL
 mysql = MySQL(app)
 
