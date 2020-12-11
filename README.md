@@ -21,8 +21,11 @@ DOWNLOAD AND RUN INSTRUCTIONS
   ### app.config['MYSQL_DB'] = 'flask_app_db' <-- Change this to any database you want to use
   USE flask_app_db;
   CREATE TABLE users(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), email VARCHAR(100), username VARCHAR(50), password VARCHAR(100), register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+  
   CREATE TABLE articles(id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255), author VARCHAR(100), body TEXT, create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+  
   exit;   # EXIT OUT OF MYSQL
+  
   cd into cloned repo
   ### The following terminal command should launch the flask_app on your machine's localhost:
   python3 app.py
