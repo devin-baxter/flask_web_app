@@ -20,6 +20,7 @@ DOWNLOAD AND RUN INSTRUCTIONS
   ### NOTE: The database name is used in app.py in the "Config MySQL" section
   ### app.config['MYSQL_DB'] = 'flask_app_db' <-- Change this to any database you want to use
   USE flask_app_db;
+  
   CREATE TABLE users(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), email VARCHAR(100), username VARCHAR(50), password VARCHAR(100), register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
   
   CREATE TABLE articles(id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255), author VARCHAR(100), body TEXT, create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
