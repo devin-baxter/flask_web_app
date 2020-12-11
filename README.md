@@ -15,7 +15,8 @@ DEPENDENCIES-->PIP/PIP3 INSTALL FOR PYTHON PLUS:
 DOWNLOAD AND RUN INSTRUCTIONS
 * Clone repo and ensure all DEPENDENCIES are installed and up-to-date
 * Log into MySQL:
-  mysql -u root -p    # Or another MySQL user who can CREATE new databases and tables
+  mysql -u root -p
+  ### Or another MySQL user who can CREATE new databases and tables
   CREATE DATABASE flask_app_dp;
   ### NOTE: The database name is used in app.py in the "Config MySQL" section
   ### app.config['MYSQL_DB'] = 'flask_app_db' <-- Change this to any database you want to use
@@ -25,7 +26,8 @@ DOWNLOAD AND RUN INSTRUCTIONS
   
   CREATE TABLE articles(id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255), author VARCHAR(100), body TEXT, create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
   
-  exit;   # EXIT OUT OF MYSQL
+  ### EXIT OUT OF MYSQL
+  exit;
   
   cd into cloned repo
   ### The following terminal command should launch the flask_app on your machine's localhost:
