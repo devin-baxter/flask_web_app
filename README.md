@@ -14,7 +14,7 @@ DEPENDENCIES-->PIP/PIP3 INSTALL FOR PYTHON PLUS:
 
 DOWNLOAD AND RUN INSTRUCTIONS
 * Clone repo and ensure all DEPENDENCIES are installed and up-to-date
-* Log into via Terminal/Command-Line MySQL:
+* Log into MySQL via Terminal/Command-Line:
   mysql -u root -p
   ### Or another MySQL user who can CREATE new databases and tables
   CREATE DATABASE flask_app_dp;
